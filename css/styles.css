@@ -1,8 +1,10 @@
 @import url(components/buttons.css);
 @import url(components/inputs.css);
+@import url(components/header.css);
 @import url(layouts/colors.css);
 @import url(layouts/typography.css);
 @import url(pages/sessions.css);
+@import url(pages/contacts.css);
 
 * {
     font-family: var(--font-primary);
