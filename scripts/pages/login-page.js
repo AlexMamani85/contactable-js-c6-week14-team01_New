@@ -41,3 +41,45 @@ function render() {
     </main>
   `;
 }
+
+function listenSubmitForm() {
+  const form =  document.querySelector(".js-login-form")
+
+  form.addEventListener("submit", async (event) => {
+    try {
+      event.preventDefault();
+  
+      const { email, password } = event.target;
+  
+      const credentials = {
+        email: email.value,
+        password: password.value,
+      }
+  
+      const user = await login(credentials)
+      STORE.user = user
+      // console.log(STORE)
+
+      await STORE.fetchCategories()
+      DOMHandler.load(HomePage)
+    } catch (error) {
+      // this.state.loginError = error.message
+      LoginPage.state.loginError = error.message
+      DOMHandler.reload()
+    }
+  })
+}
+
+const LoginPage = {
+  toString() {
+    // return render.call(this)
+    return render()
+  },
+  addListeners() {
+    // listenSubmitForm.call(this)
+    return listenSubmitForm()
+  },
+  state: {
+    loginError: null,
+  }
+}
