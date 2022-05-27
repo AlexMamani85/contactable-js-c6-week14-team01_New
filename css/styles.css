@@ -1,0 +1,11 @@
+@import url(components/buttons.css);
+@import url(components/inputs.css);
+@import url(layouts/colors.css);
+@import url(layouts/typography.css);
+
+* {
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    color: var(--gray-1);
+}
