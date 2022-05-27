@@ -2,6 +2,7 @@
 @import url(components/inputs.css);
 @import url(layouts/colors.css);
 @import url(layouts/typography.css);
+@import url(pages/sessions.css);
 
 * {
     font-family: var(--font-primary);
