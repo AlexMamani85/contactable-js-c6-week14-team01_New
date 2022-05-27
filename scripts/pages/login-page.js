@@ -9,43 +9,41 @@ function render() {
 
   const { loginError } = LoginPage.state;
   return `
-    <main class="section">
-      <section class="container">
-        <h1 class="heading heading--lg text-center mb-4">Login</h1>
-        <form class="flex flex-column gap-4 mb-4 js-login-form">
+    <main class="session-container">
+        <h1 class="session__title">Login</h1>
+        <hr class="hr">
+        <form class="session__form">
+          <div class="form__input-container">
+            ${input({
+              type: "email",
+              placeholder: "example@gmail.com",
+              required: true,
+              value: "team01@mail.com" // quitar el value al final
+            })}
 
-          ${input({
-            label: "email",
-            id: "email",
-            type: "email",
-            placeholder: "example@gmail.com",
-            required: true,
-            value: "team01@mail.com" // quitar el value al final
-          })}
+            ${input({
+              type: "password",
+              placeholder: "******",
+              required: true,
+              value: "123456" // quitar el value al final
+            })}
 
-          ${input({
-            label: "password",
-            id: "password",
-            type: "password",
-            placeholder: "******",
-            required: true,
-            value: "123456" // quitar el value al final
-          })}
-
-          ${loginError ? 
-            `<p class="text-center error-300">${loginError}</p>`: ''
-          }
-
-          <button class="button button--primary">Login</button>
+            ${loginError ? 
+              `<p class="text-center error-300">${loginError}</p>`: ''
+            }
+          </div>
+          <div class="session__buttons">
+            <hr class="hr">
+            <a href="#" class="button__link">Signup</a>
+            <button class="button__link" type="submit">Login</button>
+          </div>
         </form>
-        <a href="#" class="block text-center js-signup-link">Create account</a>
-      </section>
     </main>
   `;
 }
 
 function listenSubmitForm() {
-  const form =  document.querySelector(".js-login-form")
+  const form =  document.querySelector(".session__form")
 
   form.addEventListener("submit", async (event) => {
     try {
