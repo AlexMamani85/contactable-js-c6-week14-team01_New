@@ -60,3 +60,46 @@
     border-radius: 50%;
     box-shadow: 0px 0px 4px 4px var(--gray-4);
 }
+
+.container-contact {
+    max-width: 375px;
+    height: 100vh;
+    margin: 2rem auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.contact__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact__avatar {
+    width: 90px;
+    height: 90px;
+}
+
+.contact__name {
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.contact__relation {
+    font-size: 17px;
+}
+
+.contact__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact__text {
+    color: var(--gray-2);
+    font-size: 18px;
+}
