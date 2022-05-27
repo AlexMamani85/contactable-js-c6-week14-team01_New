@@ -44,6 +44,9 @@
     line-height: 20px;
     transition: all 0.5s;
     text-transform: capitalize;
+    background-color: transparent;
+    appearance: none;
+    box-sizing: border-box;
 }
 
 .session__input:focus {
@@ -67,4 +70,9 @@
     line-height: 20px;
     color: var(--blue);
     cursor: pointer;
+}
+
+.session__input--error,
+.session__input--error:focus {
+    border-bottom: 1px solid var(--error);
 }

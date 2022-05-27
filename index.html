@@ -8,12 +8,38 @@
   </head>
   <body>
     <div id="root">
+      <header class="header">
+        <h1 class="header__title">Create new contact</h1>
+        <a href="#" class="button__link">Logout</a>
+      </header>
+      <main class="session-container">
+        <form class="session__form">
+          <div class="form__input-container">
+            <input type="text" placeholder="Name" class="session__input">
+            <input type="text" placeholder="Number" class="session__input">
+            <input type="email" placeholder="Email" class="session__input session__input--error">
+            <select name="" class="session__input" placeholder="Relation">
+              <option value="">Relation</option>
+              <option value="family">Family</option>
+              <option value="friends">Friends</option>
+              <option value="work">Work</option>
+              <option value="acquaintance">Acquaintance</option>
+            </select>
+          </div>
+          <div class="session__buttons">
+            <hr class="hr">
+            <a href="#" class="button__link">Signup</a>
+            <button class="button__link" type="submit">Login</button>
+          </div>
+        </form>
+      </main>
+
       <!-- <main class="session-container">
         <h1 class="session__title">Login</h1>
         <hr class="hr">
         <form class="session__form">
           <div class="form__input-container">
-            <input type="text" placeholder="email" class="session__input">
+            <input type="email" placeholder="email" class="session__input">
             <input type="password" placeholder="password" class="session__input">
           </div>
           <div class="session__buttons">
@@ -24,11 +50,7 @@
         </form>
       </main> -->
 
-      <header class="header">
-        <h1 class="header__title">Contactable</h1>
-        <a href="#" class="button__link">Logout</a>
-      </header>
-      <main class="container__contacts">
+      <!-- <main class="container__contacts">
         <h2 class="contacts__title">contacts(10)</h2>
         <hr class="hr">
         <ul class="contacts__list">
@@ -63,7 +85,8 @@
         <div class="container__buttonAdd">
           <img class="buttonAdd" src="images/add.svg" alt="add-icon">
         </div>
-      </main>
+      </main> -->
+
 
     </div>
   </body>
