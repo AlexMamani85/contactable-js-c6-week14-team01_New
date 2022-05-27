@@ -1,7 +1,8 @@
 // REVISAR COMENTARIOS
-
-
-import { input  } from "../components/input";
+import { login } from "../services/sessions-service.js";
+import DOMHandler from "../dom-handler.js";
+import { input  } from "../components/input.js";
+import STORE from "../store.js";
 
 function render() {
 
@@ -60,7 +61,7 @@ function listenSubmitForm() {
       STORE.user = user
       // console.log(STORE)
 
-      await STORE.fetchCategories()
+      await STORE.filterContacts()
       DOMHandler.load(HomePage)
     } catch (error) {
       // this.state.loginError = error.message
@@ -83,3 +84,5 @@ const LoginPage = {
     loginError: null,
   }
 }
+
+export default LoginPage

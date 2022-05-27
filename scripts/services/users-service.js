@@ -11,5 +11,3 @@ export async function createUser(newUser = {
   sessionStorage.setItem(tokenKey, token)
   return user;
 }
-
-

@@ -1,4 +1,4 @@
-import apiFetch from "./api-fetch";
+import apiFetch from "./api-fetch.js";
 
 export function getContacts(){
     return apiFetch("contacts");
