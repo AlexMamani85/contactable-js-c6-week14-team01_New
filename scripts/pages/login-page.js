@@ -3,6 +3,7 @@ import { login } from "../services/sessions-service.js";
 import DOMHandler from "../dom-handler.js";
 import { input  } from "../components/input.js";
 import STORE from "../store.js";
+import HomePage from "./homepage.js";
 
 function render() {
 

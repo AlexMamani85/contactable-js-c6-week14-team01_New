@@ -1,5 +1,5 @@
 import DOMHandler from "./scripts/dom-handler.js";
-// import HomePage from "./scripts/pages/home-page.js";
+import HomePage from "./scripts/pages/homepage.js";
 import LoginPage from "./scripts/pages/login-page.js";
 import { tokenKey } from "./scripts/config.js";
 import STORE from "./scripts/store.js";
