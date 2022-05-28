@@ -1,5 +1,5 @@
 import { input } from "../components/input.js"
-import { createContact } from "../services/contact-services.js"
+import { createContact, deleteContact } from "../services/contact-services.js"
 import HomePage from "./homepage.js"
 import DOMHandler from "../dom-handler.js";
 import STORE from "../store.js";
@@ -30,7 +30,7 @@ function render() {
 
         <div>
           <button class="back-btn">Back</button>
-          <button class="delete-btn">Delete</button>
+          <button class="delete-btn" data-id="${contact.id}">Delete</button>
           <button class="edit-btn">Edit</button>
         </div>
     </main>
@@ -47,7 +47,20 @@ function listenBackButton() {
   })
 }
 
+function listenDeleteButton() {
+  const button = document.querySelector(".delete-btn")
 
+  button.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const id = event.target.getAttribute("data-id")
+    
+    await deleteContact(id)
+    await STORE.filterContacts()
+    DOMHandler.load(HomePage)
+
+})
+}
 
 
 const contactDetail = {
@@ -56,7 +69,7 @@ const contactDetail = {
   },
   addListeners() {
     listenBackButton()
-
+    listenDeleteButton()
   }
 }
 
