@@ -29,41 +29,34 @@ function render() {
 
 
         <div>
-          <a href="#">Cancel</a>
-          <button type="submit">Save</button>
+          <button class="back-btn">Back</button>
+          <button class="delete-btn">Delete</button>
+          <button class="edit-btn">Edit</button>
         </div>
     </main>
   `
 }
 
-function listenSubmitForm() {
-  const form = document.querySelector(".js-new-contact-form")
 
-  form.addEventListener("submit", async (event) => {
+function listenBackButton() {
+  const button = document.querySelector(".back-btn")
+  
+  button.addEventListener("click", (event) => {
     event.preventDefault();
-
-    const { name, number, email, relation } = event.target
-
-    const newContact = {
-      name: name.value,
-      number: number.value,
-      email: email.value,
-      relation: relation.value
-    }
-
-    await createContact(newContact)
-    await STORE.filterContacts();
     DOMHandler.load(HomePage)
-
   })
 }
+
+
+
 
 const contactDetail = {
   toString() {
     return render()
   },
   addListeners() {
-    listenSubmitForm();
+    listenBackButton()
+
   }
 }
 
