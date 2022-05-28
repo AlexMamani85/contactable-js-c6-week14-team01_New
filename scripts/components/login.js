@@ -4,6 +4,7 @@ import DOMHandler from "../dom-handler.js";
 import { input  } from "./input.js";
 import STORE from "../store.js";
 import HomePage from "./../pages/homepage.js";
+import currentPage from "../currentPageSession.js";
 
 function render() {
 
@@ -34,7 +35,7 @@ function render() {
           </div>
           <div class="session__buttons">
             <hr class="hr">
-            <a href="#" class="button__link">Signup</a>
+            <a href="#" class="button__link signup">Signup</a>
             <button class="button__link" type="submit">Login</button>
           </div>
         </form>
@@ -69,6 +70,17 @@ function listenSubmitForm() {
   })
 }
 
+function listenButtonSignup() {
+  const button = document.querySelector(".signup");
+
+  button.addEventListener("click", event => {
+    event.preventDefault();
+
+    currentPage.page = "signup";
+    DOMHandler.reload();
+  })
+}
+
 const Login = {
   toString() {
     // return render.call(this)
@@ -76,7 +88,8 @@ const Login = {
   },
   addListeners() {
     // listenSubmitForm.call(this)
-    return listenSubmitForm()
+    listenSubmitForm(),
+    listenButtonSignup()
   },
   state: {
     loginError: null

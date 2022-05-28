@@ -1,4 +1,5 @@
 import Login from "../components/login.js" 
+import SignUp from "../components/signup.js";
 import currentPage from "../currentPageSession.js";
 
 function render() {
@@ -16,8 +17,8 @@ const LoginPage = {
     return render();
   },
   addListeners() {
-    if(currentPage==="login") Login.addListeners();
-    if(currentPage==="signup") SignUp.addListeners();
+    if(currentPage.page === "login") Login.addListeners();
+    if(currentPage.page === "signup") SignUp.addListeners();
   }
 }
 
