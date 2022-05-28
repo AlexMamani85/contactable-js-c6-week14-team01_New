@@ -1,0 +1,105 @@
+.container__contacts {
+    max-width: 375px;
+    height: 100vh;
+    margin: 2rem auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contacts__title {
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contacts__list {
+    list-style: none;
+    padding: 0.3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list__element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.list__element:hover {
+    background-color: var(--gray-4);
+}
+
+.contacts__info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info__name {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.container__buttonAdd {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray-4);
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px 4px var(--gray-4);
+}
+
+.container-contact {
+    max-width: 375px;
+    height: 100vh;
+    margin: 2rem auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.contact__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact__avatar {
+    width: 90px;
+    height: 90px;
+}
+
+.contact__name {
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.contact__relation {
+    font-size: 17px;
+}
+
+.contact__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact__text {
+    color: var(--gray-2);
+    font-size: 18px;
+}

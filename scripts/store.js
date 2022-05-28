@@ -9,7 +9,7 @@ async function filterContacts(){
 const STORE = {
   user: null,
   contacts: [],
-  // currenTab: "",
+  currenTab: "",
   filterContacts
 };
 
