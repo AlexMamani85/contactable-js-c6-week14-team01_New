@@ -1,14 +1,14 @@
 import { input } from "../components/input.js"
-import { createContact } from "../services/contact-services.js"
+import { createContact, deleteContact } from "../services/contact-services.js"
 import HomePage from "./homepage.js"
 import DOMHandler from "../dom-handler.js";
 import STORE from "../store.js";
+import editContactPage from "./edit-contact.js"
 
 
 function render() {
   let id = STORE.contactId
   let contact = STORE.showContact(id)
-  console.log(contact)
   if (!id)  throw new Error("not valid Id Contact")
   return `
     <header class="header">
@@ -29,33 +29,52 @@ function render() {
 
 
         <div>
-          <a href="#">Cancel</a>
-          <button type="submit">Save</button>
+          <button class="back-btn">Back</button>
+          <button class="delete-btn" data-id="${contact.id}">Delete</button>
+          <button class="edit-btn" data-id="${contact.id}">Edit</button>
         </div>
     </main>
   `
 }
 
-function listenSubmitForm() {
-  const form = document.querySelector(".js-new-contact-form")
 
-  form.addEventListener("submit", async (event) => {
+function listenBackButton() {
+  const button = document.querySelector(".back-btn")
+  
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    DOMHandler.load(HomePage)
+  })
+}
+
+function listenDeleteButton() {
+  const button = document.querySelector(".delete-btn")
+
+  button.addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const { name, number, email, relation } = event.target
-
-    const newContact = {
-      name: name.value,
-      number: number.value,
-      email: email.value,
-      relation: relation.value
-    }
-
-    await createContact(newContact)
-    await STORE.filterContacts();
+    const id = event.target.getAttribute("data-id")
+    
+    await deleteContact(id)
+    await STORE.filterContacts()
     DOMHandler.load(HomePage)
-
+    
   })
+}
+
+function listenEditButton() {
+  const button = document.querySelector(".edit-btn")
+  
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    
+    const id = event.target.getAttribute("data-id")
+    
+    STORE.contactId = id
+    
+    DOMHandler.load(editContactPage)
+
+})
 }
 
 const contactDetail = {
@@ -63,7 +82,9 @@ const contactDetail = {
     return render()
   },
   addListeners() {
-    listenSubmitForm();
+    listenBackButton(),
+    listenDeleteButton(),
+    listenEditButton()
   }
 }
 
