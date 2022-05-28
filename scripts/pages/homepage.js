@@ -5,12 +5,12 @@ import contactDetail from "./contact-detail.js"
 
 function renderContacts(contact) {
   return `
-  <li>
-    <div class="contact--img" >
-      <img src="/images/person.svg" data-id="${contact.id}">
-      <p data-id="${contact.id}">${contact.name}</p>
+  <li class="list__element">
+    <div class="contacts__info" >
+      <img class="info__avatar" src="/images/person.svg" data-id="${contact.id}" alt="contact-avatar">
+      <p class="info__name" data-id="${contact.id}">${contact.name}</p>
     </div>
-    <img src="/images/star.svg" class="contact--favorite__btn" data-tab="favoriteContact">
+    <img src="/images/star.svg" class="contacts__favorite" data-tab="favoriteContact">
 
 
   </li>
@@ -20,14 +20,19 @@ function renderContacts(contact) {
 function render() {
   return `
     <main>
-      <header> 
-        <h1>Contactable</h1>
-        <a href="#" ></a>
+      <header class="header"> 
+        <div>
+          <h1 class="header__title">Contactable</h1>
+          <p>Contacts(${STORE.contacts.length})</p>
+        </div>
+        <a href="#" class="button__link">Logout</a>
+
+
       </header>
       <div>
         <div>
-          <p>Contacts(${STORE.contacts.length})</p>
-          <ul class="js-contacts-list">
+
+          <ul class="js-contacts-list contacts__list session-container">
             ${STORE.contacts.map(renderContacts).join("")}
           </ul>
         </div>

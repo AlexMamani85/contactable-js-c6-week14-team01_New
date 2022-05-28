@@ -7,11 +7,12 @@ import STORE from "../store.js";
 
 function render() {
   return `
-    <header>
-      <h1>Create new contact</h1>
-      <a href="#">Logout</a>
+
+    <header  class="header">
+      <h1 class="header__title">Create new contact</h1>
+      <a href="#" class="button__link">Logout</a>
     </header>
-    <section>
+    <section class="container--edit__contacts">
       <form class="js-new-contact-form">
         <div>
           ${input({
@@ -44,7 +45,7 @@ function render() {
           })}
         </div>
         <div>
-          <select name="relation">
+          <select class="select-margin select__input" name="relation" name="relation">
             <option value="" selected disabled>Relation</option>
             <option value="Family">Family</option>
             <option value="Friends">Friends</option>
