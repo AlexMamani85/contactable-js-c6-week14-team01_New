@@ -1,13 +1,14 @@
 import STORE from "./../store.js";
 import DOMHandler from "../dom-handler.js";
 import NewContactPage from "./new-contact-page.js"
+import contactDetail from "./contact-detail.js"
 
 function renderContacts(contact) {
   return `
   <li>
     <div class="contact--img" >
-      <img src="/images/person.svg" data-tab="showDetail">
-      <p data-tab="showDetail">${contact.name}</p>
+      <img src="/images/person.svg" data-id="${contact.id}">
+      <p data-id="${contact.id}">${contact.name}</p>
     </div>
     <img src="/images/star.svg" class="contact--favorite__btn" data-tab="favoriteContact">
 
@@ -57,10 +58,10 @@ function showContactListener(){
   const ul = document.querySelector(".js-contacts-list")
   ul.addEventListener("click",(event)=>{
     event.preventDefault()
-    const {tab}=event.target.dataset
-    if(!tab) return;
-    STORE.currenTab = tab;
-    DOMHandler.reload()
+    const {id}=event.target.dataset
+    if(!id) return;
+    STORE.contactId = id
+    DOMHandler.load(contactDetail)
   })
 
 }
@@ -71,7 +72,7 @@ const HomePage = {
     return render()
   },
   addListeners() {
-    addButtonListener()
+    addButtonListener(),
     showContactListener()
 
   }
@@ -79,7 +80,3 @@ const HomePage = {
 
 export default HomePage
 
-// data-tab
-//    showDetail
-//    addBtn
-//    favoriteContact
