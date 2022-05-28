@@ -44,14 +44,13 @@ function render() {
           })}
         </div>
         <div>
-          ${input({
-            label: "relation",
-            id: "relation",
-            type: "relation",
-            placeholder: "Relation",
-            required: true
-            // value:
-          })}
+          <select name="relation">
+            <option value="" selected disabled>Relation</option>
+            <option value="Family">Family</option>
+            <option value="Friends">Friends</option>
+            <option value="Work">Work</option>
+            <option value="Acquaintance">Acquaintance</option>
+          </select>
         </div>
         <div>
           <a href="#">Cancel</a>
