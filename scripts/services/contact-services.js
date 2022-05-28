@@ -18,6 +18,7 @@ export function createContact(newContact = { name, number, email, relation}){
 
 export function editContact(id, data = { name, number, email, relation, favorite}){
     return apiFetch(`contacts/${id}`, {
+        method: "PATCH",
         body: data
     })
 }

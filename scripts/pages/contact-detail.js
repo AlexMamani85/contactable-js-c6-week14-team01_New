@@ -3,12 +3,12 @@ import { createContact, deleteContact } from "../services/contact-services.js"
 import HomePage from "./homepage.js"
 import DOMHandler from "../dom-handler.js";
 import STORE from "../store.js";
+import editContactPage from "./edit-contact.js"
 
 
 function render() {
   let id = STORE.contactId
   let contact = STORE.showContact(id)
-  console.log(contact)
   if (!id)  throw new Error("not valid Id Contact")
   return `
     <header class="header">
@@ -31,7 +31,7 @@ function render() {
         <div>
           <button class="back-btn">Back</button>
           <button class="delete-btn" data-id="${contact.id}">Delete</button>
-          <button class="edit-btn">Edit</button>
+          <button class="edit-btn" data-id="${contact.id}">Edit</button>
         </div>
     </main>
   `
@@ -58,18 +58,33 @@ function listenDeleteButton() {
     await deleteContact(id)
     await STORE.filterContacts()
     DOMHandler.load(HomePage)
+    
+  })
+}
+
+function listenEditButton() {
+  const button = document.querySelector(".edit-btn")
+  
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    
+    const id = event.target.getAttribute("data-id")
+    
+    STORE.contactId = id
+    
+    DOMHandler.load(editContactPage)
 
 })
 }
-
 
 const contactDetail = {
   toString() {
     return render()
   },
   addListeners() {
-    listenBackButton()
-    listenDeleteButton()
+    listenBackButton(),
+    listenDeleteButton(),
+    listenEditButton()
   }
 }
 
