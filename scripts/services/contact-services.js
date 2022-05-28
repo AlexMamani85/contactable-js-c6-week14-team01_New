@@ -21,3 +21,4 @@ export function editContact(id, data = { name, number, email, relation, favorite
         body: data
     })
 }
+
