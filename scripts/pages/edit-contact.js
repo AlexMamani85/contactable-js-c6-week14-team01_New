@@ -8,12 +8,12 @@ import contactDetail from "./contact-detail.js";
 function render() {
   const contact = STORE.showContact(STORE.contactId)
   return `
-    <header>
-      <h1>Edit contact</h1>
-      <a href="#">Logout</a>
+    <header  class="header">
+      <h1 class="header__title">Edit contact</h1>
+      <a href="#" class="button__link">Logout</a>
     </header>
-    <section>
-      <form class="js-edit-contact-form">
+    <section  class="container--edit__contacts">
+      <form class="js-edit-contact-form ">
         <div>
           ${input({
             label: "name",
@@ -45,7 +45,7 @@ function render() {
           })}
         </div>
         <div>
-          <select name="relation">
+          <select class="select-margin select__input" name="relation">
             <option value="Family" ${contact.relation=="Family" ? "selected" : ""}>Family</option>
             <option value="Friends" ${contact.relation=="Friends" ? "selected" : ""}>Friends</option>
             <option value="Work" ${contact.relation=="Work" ? "selected" : ""}>Work</option>
