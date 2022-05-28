@@ -1,5 +1,6 @@
 import STORE from "./../store.js";
 import DOMHandler from "../dom-handler.js";
+import NewContactPage from "./new-contact-page.js"
 
 function renderContacts(contact) {
   return `
@@ -47,7 +48,7 @@ function addButtonListener(){
     const {tab}=event.target.dataset
     if(!tab) return;
     STORE.currenTab = tab;
-    DOMHandler.reload()
+    DOMHandler.load(NewContactPage)
   })
 }
 
@@ -63,7 +64,6 @@ function showContactListener(){
   })
 
 }
-
 
 
 const HomePage = {
