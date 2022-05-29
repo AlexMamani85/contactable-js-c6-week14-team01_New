@@ -39,23 +39,18 @@ function render() {
           </ul>
         </div>
       </div>
-      <footer>
-      <a class="footer--button__add" href="#">
-        <img src="/images/add.svg" data-tab="addBtn">
+      <a class="container__buttonAdd" href="#">
+        <img class="buttonAdd" src="images/add.svg" alt="add-icon">
       </a>
-      </footer>
     </main>
 
   `
 }
 
 function addButtonListener(){
-  const button = document.querySelector(".footer--button__add")
+  const button = document.querySelector(".container__buttonAdd")
   button.addEventListener("click",(event)=>{
     event.preventDefault()
-    const {tab}=event.target.dataset
-    if(!tab) return;
-    STORE.currenTab = tab;
     DOMHandler.load(NewContactPage)
   })
 }
