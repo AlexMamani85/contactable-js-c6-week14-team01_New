@@ -19,6 +19,14 @@ function renderContacts(contact) {
   `
 }
 
+function renderFavoriteContacts() {
+  return `<h2 class="contacts__title">favorites</h2>
+          <hr class="hr">
+          <ul class="js-contacts-list favorite__section">
+            ${STORE.favoriteContacts.map(renderContacts).join("")}
+          </ul>`
+}
+
 function render() {
   return `
     <main>
@@ -29,7 +37,8 @@ function render() {
         <a href="#" class="button__link logout">Logout</a>
       </header>
       <div>
-        <div>
+      <div>
+          ${STORE.favoriteContacts.length > 0 ? renderFavoriteContacts() : "" }
           <h2 class="contacts__title">contacts (${STORE.contacts.length})</h2>
           <hr class="hr">
           <ul class="js-contacts-list contacts__list session-container">
