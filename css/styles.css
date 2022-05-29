@@ -4,6 +4,7 @@
 @import url(layouts/typography.css);
 @import url(pages/sessions.css);
 @import url(pages/contacts.css);
+@import url(components/icons.css);
 
 * {
     font-family: var(--font-primary);

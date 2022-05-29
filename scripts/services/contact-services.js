@@ -23,3 +23,9 @@ export function editContact(id, data = { name, number, email, relation, favorite
     })
 }
 
+export function updateFavoriteContact(id, data = { favorite }) {
+    return apiFetch(`contacts/${id}`, {
+        method: "PATCH",
+        body: data
+    })
+}
