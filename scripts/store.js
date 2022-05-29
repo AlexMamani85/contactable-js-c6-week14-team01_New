@@ -10,8 +10,12 @@ async function filterContacts(){
 } 
 
 function showContact(id){
-  return this.contacts.find(contact=>contact.id==id)
-
+  let contact = this.contacts.find(contact => contact.id == id);
+  if(!contact){
+    contact = this.favoriteContacts.find(contact => contact.id == id)
+  }
+  
+  return contact;
 } 
 
 const STORE = {

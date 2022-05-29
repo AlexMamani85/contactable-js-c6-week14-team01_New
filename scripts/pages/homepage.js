@@ -22,7 +22,7 @@ function renderContacts(contact) {
 function renderFavoriteContacts() {
   return `<h2 class="contacts__title">favorites</h2>
           <hr class="hr">
-          <ul class="js-contacts-list favorite__section">
+          <ul class="js-favorites-list favorite__section">
             ${STORE.favoriteContacts.map(renderContacts).join("")}
           </ul>`
 }
@@ -37,8 +37,8 @@ function render() {
         <a href="#" class="button__link logout">Logout</a>
       </header>
       <div>
+      ${STORE.favoriteContacts.length > 0 ? renderFavoriteContacts() : "" }
       <div>
-          ${STORE.favoriteContacts.length > 0 ? renderFavoriteContacts() : "" }
           <h2 class="contacts__title">contacts (${STORE.contacts.length})</h2>
           <hr class="hr">
           <ul class="js-contacts-list contacts__list session-container">
@@ -63,11 +63,22 @@ function addButtonListener(){
 }
 
 // contact--img linea 7
-function showContactListener(){
+function listenContactDetail(){
   const ul = document.querySelector(".js-contacts-list")
   ul.addEventListener("click",(event)=>{
     event.preventDefault()
-    const {id}=event.target.dataset
+    const { id }=event.target.dataset
+    if(!id) return;
+    STORE.contactId = id
+    DOMHandler.load(contactDetail)
+  })
+}
+
+function listenFavoriteDetail(){
+  const ul = document.querySelector(".js-favorites-list")
+  ul.addEventListener("click",(event)=>{
+    event.preventDefault()
+    const { id }=event.target.dataset
     if(!id) return;
     STORE.contactId = id
     DOMHandler.load(contactDetail)
@@ -92,9 +103,9 @@ const HomePage = {
   },
   addListeners() {
     addButtonListener(),
-    showContactListener(),
-    listenLogout()
-
+    listenContactDetail(),
+    listenLogout(),
+    listenFavoriteDetail()
   }
 }
 
