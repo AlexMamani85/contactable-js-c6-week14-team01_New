@@ -4,7 +4,6 @@ import DOMHandler from "../dom-handler.js";
 import STORE from "../store.js";
 import contactDetail from "./contact-detail.js";
 
-
 function render() {
   const contact = STORE.showContact(STORE.contactId)
   return `
@@ -65,7 +64,7 @@ function listenCancelButton() {
   button.addEventListener("click", event => {
     event.preventDefault();
 
-    DOMHandler.load(HomePage);
+    DOMHandler.load(contactDetail);
   })
 }
 
