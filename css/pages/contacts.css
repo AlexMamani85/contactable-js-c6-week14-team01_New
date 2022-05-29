@@ -13,6 +13,7 @@
     font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin: 1rem;
 }
 
 .contacts__list {
@@ -115,4 +116,8 @@
     gap: 1rem;
     font-size:1rem;
     
+}
+
+.contact__buttons {
+    margin-top: 80%;
 }

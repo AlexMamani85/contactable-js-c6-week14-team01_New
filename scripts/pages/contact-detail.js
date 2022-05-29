@@ -16,7 +16,7 @@ function render() {
       <a href="#" class="button__link">Logout</a>
     </header> 
     
-    <main class="container__contacts">
+    <main class="container-contact">
         <div class="contact__info">
           <img class="contact__avatar" src="images/person.svg" alt="icon-avatar">
           <p class="contact__name">${contact.name}</p>
@@ -27,11 +27,11 @@ function render() {
           <p class="contact__text">Email: <span class="text">${contact.email}</span></p>
         </div>
 
-
-        <div>
-          <button class="back-btn">Back</button>
-          <button class="delete-btn" data-id="${contact.id}">Delete</button>
-          <button class="edit-btn" data-id="${contact.id}">Edit</button>
+        <div class="session-buttons contact__buttons">
+          <hr class="hr">
+          <a href="#" class="button__link back-btn">Back</a>
+          <a href="#" class="button__link delete-btn" data-id="${contact.id}">Delete</a>
+          <a href="#" class="button__link edit-btn" data-id="${contact.id}">Edit</a>
         </div>
     </main>
   `

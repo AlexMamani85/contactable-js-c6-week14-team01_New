@@ -12,9 +12,9 @@ function render() {
       <h1 class="header__title">Create new contact</h1>
       <a href="#" class="button__link">Logout</a>
     </header>
-    <section class="container--edit__contacts">
-      <form class="js-new-contact-form">
-        <div>
+    <main class="session-container">
+      <form class="js-new-contact-form session__form">
+        <div class="form__input-container">
           ${input({
             label: "name",
             id: "name",
@@ -23,8 +23,7 @@ function render() {
             required: true
             // value:
           })}
-        </div>
-        <div>
+       
           ${input({
             label: "number",
             id: "number",
@@ -33,8 +32,7 @@ function render() {
             required: true
             // value:
           })}
-        </div>
-        <div>
+        
           ${input({
             label: "email",
             id: "email",
@@ -43,8 +41,7 @@ function render() {
             required: true
             // value:
           })}
-        </div>
-        <div>
+       
           <select class="select-margin select__input" name="relation" name="relation">
             <option value="" selected disabled>Relation</option>
             <option value="Family">Family</option>
@@ -53,13 +50,24 @@ function render() {
             <option value="Acquaintance">Acquaintance</option>
           </select>
         </div>
-        <div>
-          <a href="#">Cancel</a>
-          <button type="submit">Save</button>
-        </div>
+        <div class="session__buttons">
+            <hr class="hr">
+            <a href="#" class="button__link cancel">Cancel</a>
+            <button class="button__link" type="submit">Save</button>
+          </div>
       </form>
-    </section>
+    </main>
   `
+}
+
+function listenCancelButton() {
+  const button = document.querySelector(".cancel");
+
+  button.addEventListener("click", event => {
+    event.preventDefault();
+
+    DOMHandler.load(HomePage);
+  })
 }
 
 function listenSubmitForm() {
@@ -89,7 +97,8 @@ const NewContactPage = {
     return render()
   },
   addListeners() {
-    listenSubmitForm();
+    listenSubmitForm(),
+    listenCancelButton()
   }
 }
 
