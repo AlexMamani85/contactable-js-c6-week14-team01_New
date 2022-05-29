@@ -1,9 +1,12 @@
 import { getContacts } from "./services/contact-services.js"
 
 async function filterContacts(){
-  const contacts = await getContacts();
+  let contacts = await getContacts();
 
-  this.contacts = contacts.filter(contact => contact.user_id === this.user.id );
+  contacts = contacts.filter(contact => contact.user_id === this.user.id);
+
+  this.contacts = contacts.filter(contact => contact.favorite === false);
+  this.favoriteContacts = contacts.filter(contact => contact.favorite === true);
 } 
 
 function showContact(id){
@@ -14,6 +17,7 @@ function showContact(id){
 const STORE = {
   user: null,
   contacts: [],
+  favoriteContacts: [],
   currenTab: "",
   contactId: null,
   filterContacts,
