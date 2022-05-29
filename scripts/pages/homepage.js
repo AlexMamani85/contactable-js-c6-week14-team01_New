@@ -25,15 +25,13 @@ function render() {
       <header class="header"> 
         <div>
           <h1 class="header__title">Contactable</h1>
-          <p>Contacts(${STORE.contacts.length})</p>
         </div>
         <a href="#" class="button__link logout">Logout</a>
-
-
       </header>
       <div>
         <div>
-
+          <h2 class="contacts__title">contacts (${STORE.contacts.length})</h2>
+          <hr class="hr">
           <ul class="js-contacts-list contacts__list session-container">
             ${STORE.contacts.map(renderContacts).join("")}
           </ul>
