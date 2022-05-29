@@ -2,6 +2,8 @@ import STORE from "./../store.js";
 import DOMHandler from "../dom-handler.js";
 import NewContactPage from "./new-contact-page.js"
 import contactDetail from "./contact-detail.js"
+import { logout } from "../services/sessions-service.js";
+import LoginPage from "./login-page.js";
 
 function renderContacts(contact) {
   return `
@@ -25,7 +27,7 @@ function render() {
           <h1 class="header__title">Contactable</h1>
           <p>Contacts(${STORE.contacts.length})</p>
         </div>
-        <a href="#" class="button__link">Logout</a>
+        <a href="#" class="button__link logout">Logout</a>
 
 
       </header>
@@ -68,7 +70,17 @@ function showContactListener(){
     STORE.contactId = id
     DOMHandler.load(contactDetail)
   })
+}
 
+function listenLogout() {
+  const button = document.querySelector(".logout");
+
+  button.addEventListener("click", async event => {
+    event.preventDefault();
+    await logout();
+
+    DOMHandler.load(LoginPage);
+  })
 }
 
 
@@ -78,7 +90,8 @@ const HomePage = {
   },
   addListeners() {
     addButtonListener(),
-    showContactListener()
+    showContactListener(),
+    listenLogout()
 
   }
 }
